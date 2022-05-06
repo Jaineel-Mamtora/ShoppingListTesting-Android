@@ -2,10 +2,13 @@ package com.trailblazing.shoppinglisttesting.di
 
 import android.content.Context
 import androidx.room.Room
+import com.trailblazing.shoppinglisttesting.data.local.ShoppingDao
 import com.trailblazing.shoppinglisttesting.data.local.ShoppingItemDatabase
 import com.trailblazing.shoppinglisttesting.data.remote.PixabayAPI
 import com.trailblazing.shoppinglisttesting.other.Constants.BASE_URL
 import com.trailblazing.shoppinglisttesting.other.Constants.DATABASE_NAME
+import com.trailblazing.shoppinglisttesting.repositories.DefaultShoppingRepository
+import com.trailblazing.shoppinglisttesting.repositories.ShoppingRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,6 +27,13 @@ object AppModule {
     fun provideShoppingItemDatabase(
         @ApplicationContext context: Context
     ) = Room.databaseBuilder(context, ShoppingItemDatabase::class.java, DATABASE_NAME).build()
+
+    @Singleton
+    @Provides
+    fun provideDefaultShoppingRepository(
+        dao: ShoppingDao,
+        api: PixabayAPI
+    ) = DefaultShoppingRepository(dao, api) as ShoppingRepository
 
     @Singleton
     @Provides

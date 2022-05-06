@@ -1,7 +1,8 @@
-package com.trailblazing.shoppinglisttesting
+package com.trailblazing.shoppinglisttesting.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.trailblazing.shoppinglisttesting.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
