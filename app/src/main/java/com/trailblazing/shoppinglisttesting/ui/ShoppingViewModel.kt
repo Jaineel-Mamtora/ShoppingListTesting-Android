@@ -1,12 +1,12 @@
 package com.trailblazing.shoppinglisttesting.ui
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.trailblazing.shoppinglisttesting.data.local.ShoppingItem
 import com.trailblazing.shoppinglisttesting.data.remote.responses.ImageResponse
+import com.trailblazing.shoppinglisttesting.other.Constants
 import com.trailblazing.shoppinglisttesting.other.Event
 import com.trailblazing.shoppinglisttesting.other.Resource
 import com.trailblazing.shoppinglisttesting.repositories.ShoppingRepository
@@ -16,9 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ShoppingViewModel @Inject constructor(
-    application: Application,
     private val repository: ShoppingRepository
-) : AndroidViewModel(application) {
+) : ViewModel() {
 
     val shoppingItems = repository.observeAllShoppingItems()
 
@@ -47,11 +46,68 @@ class ShoppingViewModel @Inject constructor(
     }
 
     fun insertShoppingItem(name: String, amountString: String, priceString: String) {
-
+        if (name.isEmpty() || amountString.isEmpty() || priceString.isEmpty()) {
+            _insertShoppingItemStatus.postValue(
+                Event(
+                    Resource.error(
+                        "The fields must not be empty",
+                        null
+                    )
+                )
+            )
+            return
+        }
+        if (name.length > Constants.MAX_NAME_LENGTH) {
+            _insertShoppingItemStatus.postValue(
+                Event(
+                    Resource.error(
+                        "The name of the item" +
+                                "must not exceed ${Constants.MAX_NAME_LENGTH} characters", null
+                    )
+                )
+            )
+            return
+        }
+        if (priceString.length > Constants.MAX_PRICE_LENGTH) {
+            _insertShoppingItemStatus.postValue(
+                Event(
+                    Resource.error(
+                        "The price of the item" +
+                                "must not exceed ${Constants.MAX_PRICE_LENGTH} characters", null
+                    )
+                )
+            )
+            return
+        }
+        val amount = try {
+            amountString.toInt()
+        } catch (e: Exception) {
+            _insertShoppingItemStatus.postValue(
+                Event(
+                    Resource.error(
+                        "Please enter a valid amount",
+                        null
+                    )
+                )
+            )
+            return
+        }
+        val shoppingItem =
+            ShoppingItem(name, amount, priceString.toFloat(), _currImageUrl.value ?: "")
+        insertShoppingItemIntoDb(shoppingItem)
+        setCurImageUrl("")
+        _insertShoppingItemStatus.postValue(Event(Resource.success(shoppingItem)))
     }
 
     fun searchForImage(imageQuery: String) {
-
+        if (imageQuery.isEmpty()) {
+            return
+        }
+        _images.value = Event(Resource.loading(null))
+        viewModelScope.launch {
+            val response = repository.searchForImage(imageQuery)
+            _images.value = Event(response)
+        }
     }
 }
 
