@@ -59,7 +59,7 @@ class AddShoppingItemFragment @Inject constructor(
                 when (result.status) {
                     Status.SUCCESS -> {
                         Snackbar.make(
-                            requireActivity().rootLayout,
+                            requireView(),
                             "Added Shopping Item",
                             Snackbar.LENGTH_LONG
                         ).show()
@@ -67,14 +67,14 @@ class AddShoppingItemFragment @Inject constructor(
                     }
                     Status.ERROR -> {
                         Snackbar.make(
-                            requireActivity().rootLayout,
+                            requireView(),
                             "An unknown error occurred!",
                             Snackbar.LENGTH_LONG
                         ).show()
                         findNavController().popBackStack()
                     }
                     Status.LOADING -> {
-                        /*NO-OP*/
+                        /* NO-OP */
                     }
                 }
             }

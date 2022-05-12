@@ -5,11 +5,11 @@
     <string name="price_per_item">Price per Item</string>
     <string name="add">Add</string>
     <string name="image_icon">Image Icon</string>
-    <string name="search_for_images">Search for Images...</string>
+    <string name="search_for_images">Search for Images…</string>
     <string name="add_item">Add item</string>
     <string name="item_image">Item Image</string>
     <string name="_3x">3x</string>
-    <string name="price_3">Price: 3€</string>
+    <string name="price_3">Price: ₹3</string>
     <string name="name_all_caps">NAME</string>
     <string name="shopping_image">Shopping Image</string>
 </resources>

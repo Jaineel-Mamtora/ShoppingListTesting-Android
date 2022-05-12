@@ -62,7 +62,7 @@ class ShoppingFragment @Inject constructor(
         }
         viewModel?.totalPrice?.observe(viewLifecycleOwner) {
             val price = it ?: 0f
-            val priceText = "Total Price : $price€"
+            val priceText = "Total Price : ₹$price"
             tvShoppingItemPrice.text = priceText
         }
     }
