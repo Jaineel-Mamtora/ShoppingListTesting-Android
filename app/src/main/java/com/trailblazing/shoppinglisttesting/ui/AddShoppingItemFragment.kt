@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_shopping.*
 import javax.inject.Inject
 
 class AddShoppingItemFragment @Inject constructor(
-    val glide: RequestManager
+    private val glide: RequestManager
 ) : Fragment(R.layout.fragment_add_shopping_item) {
 
     lateinit var viewModel: ShoppingViewModel
@@ -51,10 +51,10 @@ class AddShoppingItemFragment @Inject constructor(
     }
 
     private fun subscribeToObservers() {
-        viewModel.currImageUrl.observe(viewLifecycleOwner, Observer {
+        viewModel.currImageUrl.observe(viewLifecycleOwner) {
             glide.load(it).into(ivShoppingImage)
-        })
-        viewModel.insertShoppingItemStatus.observe(viewLifecycleOwner, Observer {
+        }
+        viewModel.insertShoppingItemStatus.observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let { result ->
                 when (result.status) {
                     Status.SUCCESS -> {
@@ -78,7 +78,7 @@ class AddShoppingItemFragment @Inject constructor(
                     }
                 }
             }
-        })
+        }
     }
 
 }
