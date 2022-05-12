@@ -55,6 +55,4 @@ class FakeShoppingRepositoryAndroidTest : ShoppingRepository {
             Resource.success(ImageResponse(listOf(), 0, 0))
         }
     }
-
-
 }
