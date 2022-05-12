@@ -5,12 +5,12 @@
       <map>
         <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/drawable/ic_add.xml" value="0.241" />
         <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/drawable/ic_image.xml" value="0.241" />
-        <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/layout/fragment_add_shopping_item.xml" value="0.19746376811594202" />
-        <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/layout/fragment_image_pick.xml" value="0.19746376811594202" />
-        <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/layout/fragment_shopping.xml" value="0.19746376811594202" />
-        <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/layout/item_image.xml" value="0.19746376811594202" />
-        <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/layout/item_shopping.xml" value="0.19746376811594202" />
+        <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/layout/fragment_add_shopping_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/layout/fragment_image_pick.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/layout/fragment_shopping.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/layout/item_image.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Jaineel/AndroidStudioProjects/ShoppingListTesting/app/src/main/res/layout/item_shopping.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
